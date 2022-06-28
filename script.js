@@ -1,9 +1,14 @@
-function ValidarEmail(email) {
-  var emailPattern =
-    /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-  return emailPattern.test(email);
+function IsEmail(email) {
+  var exclude = /[^@-.w]|^[_@.-]|[._-]{2}|[@.]{2}|(@)[^@]*1/;
+  var check = /@[w-]+./;
+  var checkend = /.[a-zA-Z]{2,3}$/;
+  if (
+    email.search(exclude) != -1 ||
+    email.search(check) == -1 ||
+    email.search(checkend) == -1
+  ) {
+    return false;
+  } else {
+    alert("Emails não estão corretos");
+  }
 }
-console.log("teste");
-console.log(ValidarEmail("teste@teste@teste.com"));
-console.log(ValidarEmail("teste@teste.com"));
-console.log(ValidarEmail("teste@.teste.com.br"));
