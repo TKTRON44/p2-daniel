@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formulário de cadastro</title>
+    <title>Formulário de Cadastros</title>
     1
     <style>
       body {
@@ -196,7 +196,7 @@
         >
       </div>
       <div class="endereco_entrega">
-        <h1>Endereço de entrega</h1>
+        <h1>Endereço da entrega</h1>
         <br />
         <label for="txtCEP">* CEP: </label>
         <input
@@ -276,6 +276,100 @@
     </div>
     <div id="confirmarDadosUsuario"></div>
 
-    <script src="./script.js"></script>
+    <script>
+      document.getElementById("btnCadastrar").addEventListener("click", () => {
+        let error = [null];
+        let obrigatorios = [];
+
+        const email = document.getElementById("txtEmail").value;
+        const confirmEmail = document.getElementById("txtConfirmarEmail").value;
+
+        const senha = document.getElementById("txtSenha").value;
+        const confirmSenha = document.getElementById("txtConfirmarSenha").value;
+
+        if (!(senha == confirmSenha)) {
+          error.unshift("Senha não confere \n");
+        }
+
+        if (!(email == confirmEmail)) {
+          error.unshift("Email não confere \n");
+        }
+
+        if (!(error[0] === null)) {
+          document.getElementById("confirmarDadosUsuario").innerText = "";
+          alert(error);
+        } else {
+          document.getElementById("confirmarDadosUsuario").innerText = "";
+
+          let newP = document.createElement("p");
+          newP.appendChild(
+            document.createTextNode(
+              `${"Nome"}: 
+                ${document.getElementById("txtNome").value} 
+                ${document.getElementById("txtSobrenome").value}`
+            )
+          );
+          document.getElementById("confirmarDadosUsuario").appendChild(newP);
+
+          newP.appendChild(
+            document.createTextNode(
+              `${"Sexo"}: 
+                ${document.getElementById("comboSex").value} `
+            )
+          );
+          document.getElementById("confirmarDadosUsuario").appendChild(newP);
+
+          "Sexo", "comboSexo";
+          "CPF", "txtCPF";
+          "Telefone", "txtTelefone";
+          "Celular", "txtCelular";
+          "Nascimento", "txtDataNascimento";
+          "CEP", "txtCEP";
+          "Logradouro", "txtLogradouro";
+          "Número", "txtNumero";
+          "Complemento", "txtComplemento";
+          "Referência", "txtReferencia";
+          "Bairro", "txtBairro";
+          "Cidade", "txtCidade";
+          "Estado", "comboEstado";
+          "Email", "txtEmail";
+
+          let botao = document.createElement("button");
+          botao.appendChild(document.createTextNode("Confirmar Cadastro"));
+          botao.id = "confirmarCadastro";
+          document.getElementById("confirmarDadosUsuario").appendChild(botao);
+
+          document
+            .getElementById("confirmarCadastro")
+            .addEventListener("click", () => {
+              alert("Cadastro Confirmado");
+            });
+        }
+
+        console.log(error);
+      });
+      newP.appendChild(
+        document.createTextNode(
+          `${"Sexo"}: 
+                ${document.getElementById("comboSex").value} `
+        )
+      );
+      document.getElementById("confirmarDadosUsuario").appendChild(newP);
+
+      "Sexo", "comboSexo";
+      "CPF", "txtCPF";
+      "Telefone", "txtTelefone";
+      "Celular", "txtCelular";
+      "Nascimento", "txtDataNascimento";
+      "CEP", "txtCEP";
+      "Logradouro", "txtLogradouro";
+      "Número", "txtNumero";
+      "Complemento", "txtComplemento";
+      "Referência", "txtReferencia";
+      "Bairro", "txtBairro";
+      "Cidade", "txtCidade";
+      "Estado", "comboEstado";
+      "Email", "txtEmail";
+    </script>
   </body>
 </html>
